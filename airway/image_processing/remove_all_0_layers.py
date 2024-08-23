@@ -14,7 +14,7 @@ except IndexError:
 def print_model_description(model):
     total_sum = np.sum(model)
     print(f"Total sum: {total_sum:,}")
-    print(f"Total pixels in model: {np.product(np.array(model.shape)):,}")
+    print(f"Total pixels in model: {np.prod(np.array(model.shape)):,}")
     return total_sum
 
 

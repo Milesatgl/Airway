@@ -5,7 +5,7 @@ import string
 from typing import Set
 
 import markdown
-from weasyprint import HTML
+# from weasyprint import HTML # 有问题
 
 from airway.util.config_parsers import parse_defaults
 
@@ -54,8 +54,8 @@ def generate_pdf_report(folder_path: Path, file_name_without_ending: str, conten
         ) as html_file:
             html_file.write(md)
 
-    a = HTML(Path(folder_path) / f"{file_name_without_ending}.html")
-    a.write_pdf(Path(folder_path) / f"{file_name_without_ending}.pdf", presentational_hints=True)
+    # a = HTML(Path(folder_path) / f"{file_name_without_ending}.html")
+    # a.write_pdf(Path(folder_path) / f"{file_name_without_ending}.pdf", presentational_hints=True)
 
 
 def get_ignored_patients() -> Set[str]:

@@ -20,7 +20,7 @@ class BaseCLI:
     def __init__(self):
         self.defaults = parse_defaults()
         self.stage_configs = parse_stage_configs()
-        self.log_path = const.LOGS_PATH / f"log_{datetime.now().strftime('%Y-%m-%d_%H:%M:%S')}"
+        self.log_path = const.LOGS_PATH / f"log_{datetime.now().strftime('%Y-%m-%d_%H_%M_%S')}"
         self.col = Color()
         self.errors = {}
         self._subparser_action: _SubParsersAction = None
@@ -54,7 +54,8 @@ class BaseCLI:
     def _link_last_log_file(self):
         if self._logging_file_handle is not None:
             const.LOG_LN_PATH.unlink(missing_ok=True)
-            self.log_path.link_to(const.LOG_LN_PATH)
+            # self.log_path.link_to(const.LOG_LN_PATH)
+            const.LOG_LN_PATH.hardlink_to(self.log_path)
             self.log(f"Saved log file to {self.col.green(self.log_path)} (linked to ./log)", stdout=True, add_time=True)
 
     def add_as_subparser(self, subparser_action: _SubParsersAction):
@@ -91,7 +92,7 @@ class BaseCLI:
         """Executes multiple scripts as their own modules, logging their STDOUT and STDERR"""
         # print(subprocess_args)
         subprocesses = [[sys.executable, "-m", script_module] + args for args in subprocess_args]
-
+        # self.log(f'Running process:\n{subprocesses}', tabs=1, stdout=True)
         def get_progress_bar(process_count: int) -> tqdm:
             bar_fmt = "{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_inv_fmt}{postfix}]"
             return tqdm(total=process_count, unit="run", desc=tqdm_prefix, ncols=80, bar_format=bar_fmt)

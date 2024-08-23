@@ -6,6 +6,7 @@ class Color:
     def __init__(self):
         self.color_names = ["black", "red", "green", "yellow", "blue", "purple", "cyan", "white"]
         self.formatting = 0
+        self._prev_color = ""
         self._filter_pattern = re.compile(r"\033\[\d;\d+m")
         self.reset()
 

@@ -18,3 +18,5 @@ dist
 /airway/example_data/stages/
 /example_data/stages/
 /build/
+/data/*
+/noSync

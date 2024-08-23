@@ -278,6 +278,7 @@ class StagesCLI(BaseCLI):
             else:
                 subprocess_args.append([output_stage_path, *input_stage_paths, *stage_args])
             tqdm_prefix = log(f"{col.green(f'Processing {stage_name}')}", add_time=True)
+            # self.log(f'Running commmands: {subprocess_args}',stdout=True, tabs=1)
             self.concurrent_executor(subprocess_args, script_module, workers, tqdm_prefix=tqdm_prefix, verbose=verbose)
 
     def _list_patients(self, stage_path: Path):
