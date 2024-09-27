@@ -31,11 +31,6 @@ Bronchus:
     take_best: True
 
 
-
-
-
-
-
 # --- Left Bronchus --- #
 LBronchus:
     children: [LUpperLobe, LLowerLobe, Lingula, LB6]
@@ -130,11 +125,6 @@ LB8:
     vector: [10.0, -7.5, 10.0]
     color: ffc200
     clustering_endnode: True
-
-
-
-
-
 
 
 

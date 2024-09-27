@@ -2,8 +2,8 @@ import math
 from typing import Set
 from typing import Tuple
 
-import numpy as np
 
+import numpy as np
 
 def _adjacent(coord, moore_neighborhood=False):
     # 定义在每个坐标轴（x，y，z）上可能的改变量，即每个坐标值可以增大1，保持不变，或者减少1
